@@ -10,7 +10,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 
-
 # Create your views here.
 
 
@@ -51,17 +50,3 @@ class ObtainAuthTokenForUser(ObtainAuthToken):
         response = super(ObtainAuthTokenForUser, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         return Response({'token': token.key, 'id': token.user_id})
-
-
-# class UserList(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializerWithTodo
-#
-# class UserDetail(generics.RetrieveAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializerWithTodo
-
-
-# class UserModelViewSet(viewsets.ModelViewSet):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer

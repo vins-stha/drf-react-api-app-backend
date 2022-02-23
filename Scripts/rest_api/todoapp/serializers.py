@@ -38,5 +38,4 @@ class UserSerializerWithTodo(serializers.ModelSerializer):
         user.save()
         user.todos.set([])
         user.save()
-        # Token.objects.create(user=user)
         return user
