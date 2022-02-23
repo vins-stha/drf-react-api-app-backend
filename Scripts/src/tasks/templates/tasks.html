@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="task-table-container">
+    <h4 class="form-title">Your tasks lists</h4>
+    <p>Filter your tasks by
+    <form
+            {% comment %} action="" url(
+    '/api/v1/tasks?status=')"" {% endcomment %}
+    method="GET">
+    <span class="error-message" style="visibility: hidden"></span>
+    {% comment %} <select class='form-dropdown' name='task-state'
+                          onchange="filterOnChange()">
+    <option value="">Select status</option>
+    foreach(\App\Task::TASK_STATES as state)
+    <option value="" state
+    "">"state"</option>
+    endforeach
+</select> {% endcomment %}
+    </form>
+    </p>
+    <table class="table table-dark">
+
+        <thead>
+        <tr>
+            <th scope="col">Task name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody id="tasks_list">
+        {% comment %} if(count(tasks) > 0)
+        foreach(tasks as task) {% endcomment %}
+        {% for user in users %}
+
+        <tr>
+            <th scope="row">{{user.id}}</th>
+            <td class="task-descriptions">
+                {{user.name}}
+            </td>
+            <td> {{user.email}}</td>
+            <td class="actions">
+                <a href="{% url 'edit-user' user.id %}" class="btn btn-primary btn-update"
+                   name="btn-update">Update</a>
+
+                <form>
+                    <button class="btn btn-outline-danger" onclick="return confirm('Are You Sure ?')"
+                            name="btn-delete" type="submit">Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        endif
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

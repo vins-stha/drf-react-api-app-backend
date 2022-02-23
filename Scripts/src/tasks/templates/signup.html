@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="user-login login-form-container">
+    <h4 class="form-title">Sign In</h4>
+    {% if signupForm.errors %}
+    <span class="message-error">{{error}}</span>
+    {% endif %}
+    {% comment %} @endif {% endcomment %}
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <div class="form-floating mb-3">
+
+            {{signupForm.name}}
+            <label for="floatingInput">User Name</label>
+
+        </div>
+        <div class="form-floating mb-3">
+            {{signupForm.email}}
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            {{signupForm.password1}}
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            {{signupForm.password2}}
+            <label for="floatingPassword">Confirm Password</label>
+        </div>
+        {{form.errors.email}}
+        <div class="d-grid">
+            <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Register</button>
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}
