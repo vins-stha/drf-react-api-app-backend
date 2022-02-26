@@ -24,5 +24,6 @@ urlpatterns = [
     path('auth/',views.obtain_auth_token),
     path('api/', include('todoapp.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/v2/',include('cart.urls'))
 
 ]
